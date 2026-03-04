@@ -8,7 +8,8 @@
 ```
 $ aws --version
 
-[Paste your output here]
+aws-cli/2.33.12 Python/3.13.11 Darwin/25.2.0 source/arm64
+
 ```
 
 ---
@@ -17,7 +18,13 @@ $ aws --version
 ```
 $ aws configure list
 
-[Paste your output here]
+NAME       : VALUE                    : TYPE             : LOCATION
+profile    : <not set>                : None             : None
+access_key : ****************FHEX     : shared-credentials-file : 
+secret_key : ****************Ib0a     : shared-credentials-file : 
+region     : us-east-1                : config-file      : ~/.aws/config
+
+
 ```
 
 ---
@@ -26,7 +33,12 @@ $ aws configure list
 ```
 $ aws sts get-caller-identity
 
-[Paste your output here]
+{
+    "UserId": "AIDAS6EGTBA2HING2SVS6",
+    "Account": "202145728564",
+    "Arn": "arn:aws:iam::202145728564:user/Maryam-Ironhack"
+}
+
 ```
 
 ---
@@ -35,7 +47,36 @@ $ aws sts get-caller-identity
 ```
 $ aws ec2 describe-regions --output table
 
-[Paste your output here]
+
+
+ns --output table
+---------------------------------------------------------------------------------
+|                                DescribeRegions                                |
++-------------------------------------------------------------------------------+
+||                                   Regions                                   ||
+|+-----------------------------------+-----------------------+-----------------+|
+||             Endpoint              |      OptInStatus      |   RegionName    ||
+|+-----------------------------------+-----------------------+-----------------+|
+||  ec2.ap-south-1.amazonaws.com     |  opt-in-not-required  |  ap-south-1     ||
+||  ec2.eu-north-1.amazonaws.com     |  opt-in-not-required  |  eu-north-1     ||
+||  ec2.eu-west-3.amazonaws.com      |  opt-in-not-required  |  eu-west-3      ||
+||  ec2.eu-west-2.amazonaws.com      |  opt-in-not-required  |  eu-west-2      ||
+||  ec2.eu-west-1.amazonaws.com      |  opt-in-not-required  |  eu-west-1      ||
+||  ec2.ap-northeast-3.amazonaws.com |  opt-in-not-required  |  ap-northeast-3 ||
+||  ec2.ap-northeast-2.amazonaws.com |  opt-in-not-required  |  ap-northeast-2 ||
+||  ec2.ap-northeast-1.amazonaws.com |  opt-in-not-required  |  ap-northeast-1 ||
+||  ec2.ca-central-1.amazonaws.com   |  opt-in-not-required  |  ca-central-1   ||
+||  ec2.sa-east-1.amazonaws.com      |  opt-in-not-required  |  sa-east-1      ||
+||  ec2.ap-southeast-1.amazonaws.com |  opt-in-not-required  |  ap-southeast-1 ||
+||  ec2.ap-southeast-2.amazonaws.com |  opt-in-not-required  |  ap-southeast-2 ||
+||  ec2.eu-central-1.amazonaws.com   |  opt-in-not-required  |  eu-central-1   ||
+||  ec2.us-east-1.amazonaws.com      |  opt-in-not-required  |  us-east-1      ||
+||  ec2.us-east-2.amazonaws.com      |  opt-in-not-required  |  us-east-2      ||
+||  ec2.us-west-1.amazonaws.com      |  opt-in-not-required  |  us-west-1      ||
+||  ec2.us-west-2.amazonaws.com      |  opt-in-not-required  |  us-west-2      ||
+|+-----------------------------------+-----------------------+-----------------+|
+
+
 ```
 
 ---
@@ -44,7 +85,8 @@ $ aws ec2 describe-regions --output table
 ```
 $ aws configure get region
 
-[Paste your output here]
+us-east-1
+
 ```
 
 ---
@@ -53,7 +95,24 @@ $ aws configure get region
 ```
 $ aws s3 ls
 
-[Paste your output here]
+2026-02-03 15:43:43 alice-s3-access
+2026-02-03 15:55:40 bob-s3-access
+2026-03-03 10:48:02 ce-bootcamp-tfstate-maryam
+2026-03-02 17:42:50 ce-bootcamp-tfstate-maryamahmadi
+2026-02-03 16:02:50 charlie-s3-access
+2026-02-03 16:28:08 dev-bucket-to-test-bob
+2026-03-03 15:34:24 gitops-lab-maryam-dev-data-store
+2026-03-03 16:55:59 gitops-lab-maryam-prod-data-store
+2026-02-04 14:27:25 maryam-ahmadi-bootcamp-demo-2024
+2026-02-05 15:25:50 maryam-ahmadi-bootcamp-demo-2024-crr
+2026-02-05 16:29:30 maryam-ahmadi-bootcamp-inventory
+2026-02-24 14:21:50 maryamahmadi-terraform-state-bucket
+2026-02-24 15:34:57 state-ops-example1-maryamahmadi
+2026-02-24 15:34:56 state-ops-example2-maryamahmadi
+2026-02-24 15:34:56 state-ops-managed-bucket-maryamahmadi
+2026-02-24 15:37:01 state-ops-unmanaged-maryamahmadi
+
+
 ```
 
 ---
@@ -62,7 +121,31 @@ $ aws s3 ls
 ```
 $ aws ec2 describe-instance-types --query 'InstanceTypes[?contains(InstanceType, `t2`) || contains(InstanceType, `t3`)].InstanceType' --output table
 
-[Paste your output here]
+-----------------------
+|DescribeInstanceTypes|
++---------------------+
+|  t2.2xlarge         |
+|  t3.2xlarge         |
+|  t3a.2xlarge        |
+|  t3a.small          |
+|  t3.xlarge          |
+|  t2.micro           |
+|  t3.large           |
+|  t3.medium          |
+|  t2.large           |
+|  t3a.medium         |
+|  t3.micro           |
+|  t3.nano            |
+|  t3a.large          |
+|  t2.medium          |
+|  t2.xlarge          |
+|  t3.small           |
+|  t2.small           |
+|  t2.nano            |
+|  t3a.nano           |
+|  t3a.xlarge         |
+|  t3a.micro          |
++---------------------+
 ```
 
 ---
@@ -71,7 +154,45 @@ $ aws ec2 describe-instance-types --query 'InstanceTypes[?contains(InstanceType,
 ```
 $ aws iam get-account-summary
 
-[Paste your output here]
+{
+    "SummaryMap": {
+        "GroupPolicySizeQuota": 5120,
+        "InstanceProfilesQuota": 1000,
+        "Policies": 4,
+        "GroupsPerUserQuota": 10,
+        "InstanceProfiles": 2,
+        "AttachedPoliciesPerUserQuota": 10,
+        "Users": 5,
+        "PoliciesQuota": 1500,
+        "Providers": 0,
+        "AccountMFAEnabled": 1,
+        "AccessKeysPerUserQuota": 2,
+        "AssumeRolePolicySizeQuota": 2048,
+        "PolicyVersionsInUseQuota": 10000,
+        "GlobalEndpointTokenVersion": 1,
+        "VersionsPerPolicyQuota": 5,
+        "AttachedPoliciesPerGroupQuota": 10,
+        "PolicySizeQuota": 6144,
+        "Groups": 2,
+        "AccountSigningCertificatesPresent": 0,
+        "UsersQuota": 5000,
+        "ServerCertificatesQuota": 20,
+        "MFADevices": 3,
+        "UserPolicySizeQuota": 2048,
+        "PolicyVersionsInUse": 27,
+        "ServerCertificates": 0,
+        "Roles": 13,
+        "RolesQuota": 1000,
+        "SigningCertificatesPerUserQuota": 2,
+        "MFADevicesInUse": 3,
+        "RolePolicySizeQuota": 10240,
+        "AttachedPoliciesPerRoleQuota": 10,
+        "AccountAccessKeysPresent": 1,
+        "AccountPasswordPresent": 1,
+        "GroupsQuota": 300
+    }
+}
+
 ```
 
 ---
@@ -79,3 +200,91 @@ $ aws iam get-account-summary
 ## Bonus Commands (if completed)
 
 [Add any additional CLI commands you explored]
+
+
+
+
+## Command a: list of S3 buckets 
+```
+$ aws s3 ls
+aws s3 ls s3://YOUR-BUCKET-NAME --recursive --human-readable --summarize
+
+
+2026-02-03 15:43:43 alice-s3-access
+2026-02-03 15:55:40 bob-s3-access
+2026-03-03 10:48:02 ce-bootcamp-tfstate-maryam
+2026-03-02 17:42:50 ce-bootcamp-tfstate-maryamahmadi
+2026-02-03 16:02:50 charlie-s3-access
+2026-02-03 16:28:08 dev-bucket-to-test-bob
+2026-03-03 15:34:24 gitops-lab-maryam-dev-data-store
+2026-03-03 16:55:59 gitops-lab-maryam-prod-data-store
+2026-02-04 14:27:25 maryam-ahmadi-bootcamp-demo-2024
+2026-02-05 15:25:50 maryam-ahmadi-bootcamp-demo-2024-crr
+2026-02-05 16:29:30 maryam-ahmadi-bootcamp-inventory
+2026-02-24 14:21:50 maryamahmadi-terraform-state-bucket
+2026-02-24 15:34:57 state-ops-example1-maryamahmadi
+2026-02-24 15:34:56 state-ops-example2-maryamahmadi
+2026-02-24 15:34:56 state-ops-managed-bucket-maryamahmadi
+2026-02-24 15:37:01 state-ops-unmanaged-maryamahmadi
+
+
+
+
+## Command b: list of IAM users 
+
+$ aws iam list-users --output table
+
+
+
+----------------------------------------------------------------------------------------------------------------------------------------------------------------------
+|                                                                              ListUsers                                                                             |
++--------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+||                                                                               Users                                                                              ||
+|+--------------------------------------------------+----------------------------+----------------------------+-------+------------------------+--------------------+|
+||                        Arn                       |        CreateDate          |     PasswordLastUsed       | Path  |        UserId          |     UserName       ||
+|+--------------------------------------------------+----------------------------+----------------------------+-------+------------------------+--------------------+|
+||  arn:aws:iam::202145728564:user/Alice            |  2026-02-03T14:26:15+00:00 |  2026-02-03T14:40:38+00:00 |  /    |  AIDAS6EGTBA2FQ3LKJQOB |  Alice             ||
+||  arn:aws:iam::202145728564:user/Bob              |  2026-02-03T14:23:49+00:00 |  2026-02-03T15:29:03+00:00 |  /    |  AIDAS6EGTBA2P4FX3QLFZ |  Bob               ||
+||  arn:aws:iam::202145728564:user/charlie          |  2026-02-03T14:15:53+00:00 |  2026-02-03T14:59:27+00:00 |  /    |  AIDAS6EGTBA2BE4ZED5WQ |  charlie           ||
+||  arn:aws:iam::202145728564:user/Maryam-Ironhack  |  2026-02-23T15:45:26+00:00 |                            |  /    |  AIDAS6EGTBA2HING2SVS6 |  Maryam-Ironhack   ||
+||  arn:aws:iam::202145728564:user/project-app-user |  2026-02-18T14:24:00+00:00 |                            |  /    |  AIDAS6EGTBA2FISTNH67V |  project-app-user  ||
+|+--------------------------------------------------+----------------------------+----------------------------+-------+------------------------+--------------------+|
+
+
+
+
+
+## Command c: list of Security Groups (VPC)
+
+$ aws ec2 describe-security-groups --query 'SecurityGroups[*].[GroupName,GroupId,VpcId]' --output table
+
+--------------------------------------------------------------------------
+|                         DescribeSecurityGroups                         |
++---------------------+------------------------+-------------------------+
+|  default            |  sg-036c3ea6da7d1e5a1  |  vpc-0dc8a9cdb617bc76d  |
+|  launch-wizard-3    |  sg-07b2829a8b328471f  |  vpc-0c8d14af0d7db0ffc  |
+|  launch-wizard-2    |  sg-04e9f3c8cb52a1dc9  |  vpc-0d9dac6d4af73ed53  |
+|  private-test-sg    |  sg-03846b76bed25de10  |  vpc-0d9dac6d4af73ed53  |
+|  default            |  sg-0f2e57f339830728c  |  vpc-090d5cc63b383b2e1  |
+|  ec2-lab-app-sg     |  sg-0a81f6a617caa7a40  |  vpc-0d9dac6d4af73ed53  |
+|  project-sg-alb     |  sg-06900fdcc0fd26993  |  vpc-0c8d14af0d7db0ffc  |
+|  alb-sg             |  sg-0bfbc47d83b87a652  |  vpc-0d9dac6d4af73ed53  |
+|  Public Subnet-test |  sg-0e2925427a5b94001  |  vpc-090d5cc63b383b2e1  |
+|  week2-web-server-sg|  sg-0d6935a76d25d8c47  |  vpc-090d5cc63b383b2e1  |
+|  default            |  sg-014cd0b95108097a6  |  vpc-0d9dac6d4af73ed53  |
+|  default            |  sg-07d762402adffe3c6  |  vpc-0c8d14af0d7db0ffc  |
+|  ec2-lab-web-sg     |  sg-0d6ac64d152b33e22  |  vpc-0d9dac6d4af73ed53  |
+|  rds-ec2-1          |  sg-05bab76fb4e3bdc1a  |  vpc-0c8d14af0d7db0ffc  |
+|  web-servers-sg     |  sg-0082ebe449026bff9  |  vpc-0d9dac6d4af73ed53  |
+|  project-sg-app     |  sg-065dea657484fb1b9  |  vpc-0c8d14af0d7db0ffc  |
+|  ec2-rds-1          |  sg-0c3f74f1b3bb37699  |  vpc-0c8d14af0d7db0ffc  |
+|  app-sg             |  sg-02991a8ad98485783  |  vpc-090d5cc63b383b2e1  |
+|  ssm-endpoints-sg   |  sg-0c1e2afaad4cac824  |  vpc-0d9dac6d4af73ed53  |
+|  public-ssh-sg      |  sg-03182a35214057a00  |  vpc-0d9dac6d4af73ed53  |
+|  project-sg-db      |  sg-0437e29bf650db644  |  vpc-0c8d14af0d7db0ffc  |
+|  launch-wizard-1    |  sg-029005c03ef1ece1f  |  vpc-090d5cc63b383b2e1  |
+
+
+
+
+
